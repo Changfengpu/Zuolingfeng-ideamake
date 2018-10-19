@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$.ajax({
+    		type:"get",
+    		dateType: "json",
+    		url: "findAllClient",
+    		async: true,
+    		success: function(msg) {
+    			var str="";
+    			for(i in msg){
+    				str+="<tr><td>"+msg[i].c_id+"</td><td>" +msg[i].c_name+"</td><td>"+msg[i].c_sex+"</td><td>"+msg[i].c_phone+"</td><td>"+msg[i].recorder_id+"</td><td>"+msg[i].record_time+"</td><td><div><a href='updateclient.html'>修改</a><a href='deleteclient.html'>删除</a></div></td></tr>"
+    			}
+    			$("tbody").html(str);
+    		}
+    	})
+    });
+
+	</script>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th>客户编号  &nbsp;&nbsp;</th>
+<th>客户姓名  &nbsp;&nbsp;           </th>
+<th>客户性别  &nbsp;&nbsp;           </th>
+<th>客户电话 &nbsp;&nbsp;            </th>
+<th>录入员编号&nbsp;&nbsp;         </th>
+<th>录入时间&nbsp;&nbsp;             </th>		
+<th>操作</th>								
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<a href="manage.html">返回主页</a>
+</body>
+</html>

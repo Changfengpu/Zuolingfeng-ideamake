@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+     $("button").click(function(){
+    $.ajax(
+   	{url:"updateUser",
+   	type:"post",
+    dataType : "json",
+    data:$("#logform").serialize(),
+     success: function (data)
+        {
+        	if(data==1){
+        		alert("修改成功！");
+        		
+        	}else{
+        		alert("修改失败！");
+        	}
+        }
+
+    });
+	});
+        });
+</script>
+</head>
+<body>
+<h2>修改客户信息</h2><br/>
+<form  id="logform"  method="post">
+	用户编号：<input type="text" name="u_id" /><br/>
+           用户账户：<input type="text" name="username" /><br/>
+	用户密码：<input type="text" name="password" /><br/>
+	用户姓名：<input type="text" name="realname" /><br/>
+	权限编号：<input type="radio" name="r_id" value="1"/>管理员<input type="radio" name="r_id" value="2"/>销售员<br/>
+	<button>修改</button>
+</form>
+<a href="manage.html">返回主页</a>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">	
+        $(document).ready(function(){
+     $("button").click(function(){
+   $.ajax(
+   	{url:"logout",
+   	type:"post",
+    dataType : "json",
+    success: function (data){
+    	window.location.reload();
+    }
+
+
+    });
+	});
+        });
+	</script>
+</head>
+<body>
+<h1>后台主页</h1><br/>
+<button type="button">注销账户</button>
+
+客户信息管理:<br/>
+<a href="addclient.html">录入客户信息</a><br/>
+<a href="clientmanage.html">管理客户信息</a><br/>
+<a href="usermanage.html">用户管理</a><br/>
+<a href="count.html">统计排名</a><br/>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("button").click(function(){
+       $.ajax(
+      	{
+      	url:"deleteUser",
+      	type:"post",
+       dataType : "json",
+       data:{"u_id":$("#u_id").val()
+    	   },
+        success: function (data)
+           {
+           	if(data==1){
+           		alert("删除成功！");
+           		
+           	}else{
+           		alert("删除失败！");
+           	}
+           }
+
+       });
+   	});
+           });
+    </script>
+</head>
+<body>
+<h2>删除用户</h2><br/>
+<form  method="post">
+用户编号：<input type="text" id="u_id" name="u_id"><br/>
+<button>删除</button>
+</form>
+<a href="manage.html">返回主页</a>
+</body>
+</html>

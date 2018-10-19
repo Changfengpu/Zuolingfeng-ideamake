@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$.ajax({
+    		type:"post",
+    		dateType: "json",
+    		url: "countDesc",
+    		async: true,
+    		success: function(msg) {
+    			var str="";
+    			for(i in msg){
+    				str+="<tr><td>"+msg[i].u_id+"</td><td>" +msg[i].realname+"</td><td>"+msg[i].sale_count+"</td></tr>"
+    			}
+    			$("tbody").html(str);
+    		}
+    	})
+    });
+    
+     function countfreedom(){
+    	 var bdate=document.getElementById("bdate").value;
+    	 var edate=document.getElementById("edate").value;
+    	$.ajax({
+    		type:"post",
+    		dateType:"json",
+    		url:"countDescFreedom?bdate="+bdate+"&edate="+edate,
+    		async:true,
+    		date:{
+    			"bdate":bdate,
+    			"edate":edate
+    		},
+    		success: function(imsg) {
+    			var istr="";
+    			for(i in imsg){
+    				istr+="<tr><td>"+imsg[i].u_id+"</td><td>" +imsg[i].realname+"</td><td>"+imsg[i].sale_count+"</td></tr>"
+    			}
+    			$("tbody").html(istr);
+    		}
+    		
+    	})
+    };
+ 
+	</script>
+</head>
+<body>
+<h1>统计排名</h1><br/>
+<table>
+<thead>
+<tr>
+<th>用户编号  &nbsp;&nbsp;           </th>
+<th>用户姓名  &nbsp;&nbsp;           </th>
+<th>销售额（按客户数量统计）  &nbsp;&nbsp;           </th>							
+</tr>
+</thead>
+<tbody>
+</tbody>
+
+</table>
+<h3>自定义排名</h3>
+请输入起始日期：<input type="text" name="bdate" id="bdate"><br/>
+请输入结束日期：<input type="text" name="edate"  id="edate"><br/>
+<button onclick="countfreedom()">统计排名</button>
+<a href="manage.html">返回主页</a>
+</body>
+</html>

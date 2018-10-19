@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$.ajax({
+    		type:"post",
+    		dateType: "json",
+    		url: "findAllUser",
+    		async: true,
+    		success: function(msg) {
+    			var str="";
+    			for(i in msg){
+    				str+="<tr><td>"+msg[i].u_id+"</td><td>" +msg[i].username+"</td><td>"+msg[i].password+"</td><td>"+msg[i].realname+"</td><td>"+msg[i].r_id+"</td><td><div><a href='updateuser.html'>修改</a><a href='deleteuser.html'>删除</a></div></td></tr>"
+    			}
+    			$("tbody").html(str);
+    		}
+    	})
+    });
+
+	</script>
+</head>
+<body>
+<a href="adduser.html">新建用户</a><br/>
+<table>
+<thead>
+<tr>
+<th>用户编号  &nbsp;&nbsp;</th>
+<th>用户账号 &nbsp;&nbsp;           </th>
+<th>用户密码  &nbsp;&nbsp;           </th>
+<th>用户姓名  &nbsp;&nbsp;            </th>
+<th>权限编号 &nbsp;&nbsp;         </th>	
+<th>操作</th>								
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<a href="manage.html">返回主页</a>
+</body>
+</html>

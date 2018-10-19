@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">	
+        $(document).ready(function(){
+     $("#luru").click(function(){
+   $.ajax(
+   	{url:"insertClient",
+   	type:"post",
+    dataType : "json",
+    data:$("#logform").serialize(),
+     success: function (data)
+        {
+        	if(data==1){
+
+        		alert("录入成功！");
+        	}else{
+        		alert("录入失败！");
+        	}
+        }
+
+    });
+	});
+        });
+      function gettimefunction(){
+    	    var date = new Date();
+    	    var seperator1 = "-";
+    	    var month = date.getMonth() + 1;
+    	    var strDate = date.getDate();
+    	    if (month >= 1 && month <= 9) {
+    	        month = "0" + month;
+    	    }
+    	    if (strDate >= 0 && strDate <= 9) {
+    	        strDate = "0" + strDate;
+    	    }
+    	    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+  		    document.getElementById("intime").value=currentdate;
+      };
+	</script>
+</head>
+<body>
+	<h2>录入客户信息</h2><br/>
+	<form id="logform" method="post">
+	客户姓名：<input type="text" name="c_name" /><br/>
+	客户性别：<input type="radio" name="c_sex" value="男" />男<input type="radio" name="c_sex" value="女" />女<br/>
+	客户电话：<input type="text" name="c_phone" /><br/>
+	录入销售编号：<input type="text" name="recorder_id" /><br/>
+	录入时间：<input type="text" name="record_time" id="intime"/><button type="button" id="gettime" onclick="gettimefunction()">获取当前时间</button>><br/>
+	<button type="button" id="luru">录入</button>
+	</form>
+	<a href="manage.html">返回主页</a>
+</body>
+</html>
